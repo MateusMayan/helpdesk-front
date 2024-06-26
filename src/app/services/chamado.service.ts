@@ -10,7 +10,7 @@ import { Chamado } from '../models/chamado';
 export class ChamadoService {
  
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   findById(id: any): Observable<Chamado> {
@@ -20,4 +20,9 @@ export class ChamadoService {
   findAll( ): Observable<Chamado[]>{
     return this.http.get<Chamado[]>(`${API_CONFIG.baseurl}/chamados`)
   }
+
+  create(chamado: Chamado) : Observable<Chamado>{
+    return this.http.post<Chamado>(`${API_CONFIG.baseurl}/chamados`, chamado)
+}
+
 }
